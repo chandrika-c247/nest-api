@@ -6,8 +6,9 @@ import { JwtModule } from '@nestjs/jwt';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
+import { MailModule } from './mail/mail.module';
 
-// @Global()
+@Global()
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,8 +32,9 @@ import { AuthGuard } from './auth/auth.guard';
     }),
     UsersModule,
     AuthModule,
+    MailModule,
   ],
-  // exports: [JwtModule],
+  exports: [MailModule],
   providers: [
     {
       provide: APP_GUARD,
