@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
-// import { ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // const configService = app.get(ConfigService);
+  const configService = app.get(ConfigService);
   app.useGlobalPipes(
     new ValidationPipe({
       exceptionFactory: (errors) => {
@@ -19,7 +19,7 @@ async function bootstrap() {
       },
     }),
   );
-  await app.listen(process.env.PORT);
+  await app.listen(configService.get('PORT'));
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
