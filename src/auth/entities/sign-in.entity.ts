@@ -7,8 +7,7 @@ export class SignInResponse {
   message: string;
 
   @ApiProperty({
-    example:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
   })
   access_token: string;
 }

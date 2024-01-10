@@ -10,7 +10,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Public } from './decorators/public.decorator';
+import { Roles } from './decorators/roles.decorator';
 import { SignUpDto } from './dto/sign-up.dto';
 import { SignInDto } from './dto/sign-in.dto';
 import {
@@ -27,8 +27,8 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @ApiBearerAuth()
-  @ApiOkResponse({type:SignInResponse})
-  @Public()
+  @ApiOkResponse({ type: SignInResponse })
+  @Roles('public')
   @Post('login')
   @HttpCode(HttpStatus.OK)
   signIn(@Body() signInDto: SignInDto): Promise<SignInResponse> {
@@ -46,7 +46,7 @@ export class AuthController {
 
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Signup' })
-  @Public()
+  @Roles('public')
   @HttpCode(HttpStatus.OK)
   @Post('signup')
   signUp(@Body() createUserDto: SignUpDto) {

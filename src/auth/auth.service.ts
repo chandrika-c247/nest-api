@@ -21,6 +21,7 @@ export class AuthService {
         sub: userData._id,
         username: userData.email,
         email: userData.email,
+        roles: [userData.email === 'admin@gmail.com' ? 'admin' : 'user'],
       };
       return {
         message: 'Loged in successfully!!',
