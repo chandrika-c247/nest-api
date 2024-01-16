@@ -10,13 +10,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Use Node.js 12
+    - name: Use Node.js 18
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '18.x'
 
     - name: Install dependencies
       run: npm install
+
+    - name: Start project
+      run: npm run start
 
     - name: Run a one-line script
       run: echo Hello, world! ${{ secrets.API_KEY }}
