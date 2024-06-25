@@ -1,36 +1,18 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+### Installation
 
-```bash
-$ npm install
-```
+1. Clone the repo
+   ```sh
+   git clone https://{github_username}:{github_token}@github.com/chandrika-c247/nest-api.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+
 
 ## Running the app
 
@@ -45,6 +27,52 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## <a name="docker">🐳 Docker</a>
+
+This app is Docker ready !
+
+The Dockerfile is available at the root of the project.
+
+### 🚀 Production mode
+
+To run the app with Docker, command are available :
+
+```bash
+docker compose up
+```
+When starting the app in production mode with Docker, a container for the API and a container for the MongoDB database are created.
+
+Docker compose will use the `production` step of the Dockerfile to build the image.
+
+For more information, please check the **[docker-compose.yml file](https://github.com/chandrika-c247/nest-api/blob/main/docker-compose.yml)**.
+
+
+## <a name="env-variables">🌿 Env variables</a>
+
+Environnement files are available in the **[env example file](https://github.com/chandrika-c247/nest-api/blob/main/.env.example)**.
+
+You can create a `.env` file in root directory to override the default values when starting the API locally.
+
+Environment variables are :
+
+|        Name         |               Description               | Required |
+|:-------------------:|:---------------------------------------:|:--------:|
+|       `PORT`        | Port on which the API will be available |    ✅     |
+|  `JWT_EXPIRATION`   | The expiration time (In second) after which the JWT MUST token will expire.  |    ✅     |
+|    `JWT_SECRET`     | Using the same key you can generate JWT token |    ✅     |
+|    `MONGODB_URI`    | Mongo DB database url                   |    ✅     |
+|     `MAIL_HOST`     | Mail host provider                      |    ❌     |
+|    `MAIL_USER`      | Mail user name                          |    ❌     |
+|  `MAIL_PASSWORD`    | Mail password                           |    ❌     |
+|    `MAIL_FROM`      | Email address for mail sender address   |    ❌     |
+
+## <a name="github-actions">🐙 GitHub Actions</a>
+
+This project uses **GitHub Actions** to automate some boring tasks.
+
+You can find all the workflows in the **[.github/workflows directory](https://github.com/chandrika-c247/nest-api/tree/main/.github/workflows).**
+
+
 ## Test
 
 ```bash
@@ -57,17 +85,14 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+<!-- ROADMAP -->
+## Feature included
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- [x] JWT Token
+- [x] User authentication
+- [x] Nodemailer
+- [x] Swagger for api documentation
+- [x] Role by API access
+- [x] API validation
+- [x] Dockerize app
+- [x] CI/CD pipeline using guthub workflow
