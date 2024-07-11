@@ -10,7 +10,7 @@ import { Users, UserSchema } from '../users/schemas/users.schema';
     MongooseModule.forFeature([{ name: Users.name, schema: UserSchema }]),
     MulterModule.registerAsync({
       useFactory: () => ({
-        dest: './uploads',
+        dest: './public/uploads',
       }),
     }),
   ],

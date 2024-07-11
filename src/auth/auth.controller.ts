@@ -1,6 +1,9 @@
 import {
   Controller,
+  Param,
   Get,
+  Req,
+  Res,
   Request,
   Post,
   Body,
@@ -10,18 +13,18 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express';
-import { AuthService } from './auth.service';
-import { Roles } from '../common/decorators/roles.decorator';
-import { SignUpDto } from './dto/sign-up.dto';
-import { SignInDto } from './dto/sign-in.dto';
 import {
   ApiBearerAuth,
   ApiOperation,
   ApiTags,
   ApiOkResponse,
 } from '@nestjs/swagger';
+import { Express, Response } from 'express';
+import { AuthService } from './auth.service';
+import { SignUpDto } from './dto/sign-up.dto';
+import { SignInDto } from './dto/sign-in.dto';
 import { SignInResponse } from './entities/sign-in.entity';
+import { Roles } from '../common/decorators/roles.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -55,7 +58,7 @@ export class AuthController {
     return this.authService.signUp(createUserDto);
   }
 
-  // Before it you have to create a folder name upload on root directory so it will upload file on that. API endpoint : auth/upload method: post 
+  // Before it you have to create a folder name upload on root directory so it will upload file on that. API endpoint : auth/upload method: post
   @Roles('public')
   @UseInterceptors(FileInterceptor('file'))
   @Post('upload')
@@ -63,5 +66,33 @@ export class AuthController {
     return {
       file: file,
     };
+  }
+
+  // To access image from here you need to send token in header
+  @Roles('admin', 'user')
+  @Get('upload/:fileName')
+  accessFile(
+    @Param('fileName') fileName: string,
+    @Req() req: any,
+    @Res() res: Response,
+  ) {
+    console.log("here", req.cookies.token);
+    
+    res.sendFile(fileName, {
+      root: './public/uploads',
+    });
+  }
+
+  @Roles('public')
+  @Get('set-cookie')
+  setCooke(@Res() res: Response) {
+    res.cookie('token', 'my token', { maxAge: 10000 }).json({
+      user: {
+        id: 1,
+        name: 'chandu',
+      },
+      message: 'message!',
+      status: 200,
+    });
   }
 }

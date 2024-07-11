@@ -73,7 +73,7 @@ This project uses **GitHub Actions** to automate some boring tasks.
 You can find all the workflows in the **[.github/workflows directory](https://github.com/chandrika-c247/nest-api/tree/main/.github/workflows).**
 
 ## File-Upload-using-Multer
-File Upload in Nest.js using Multer is an important feature for any web application. Multer is a Node.js or express middleware, that makes it easy to handle multipart/form-data when your users upload files. When a website user uploads a file to a server, it is usually submitted via a form and encoded as multipart/form-data. Before using it you have to create a uploads folder inside root directory.
+File Upload in Nest.js using Multer is an important feature for any web application. Multer is a Node.js or express middleware, that makes it easy to handle multipart/form-data when your users upload files. When a website user uploads a file to a server, it is usually submitted via a form and encoded as multipart/form-data. Before using it you have to create a public/uploads folder inside root directory if it is not there.
 
 Read More: https://github.com/chandrika-c247/nest-api/blob/main/src/auth/auth.controller.ts?plain=1#L58
 
@@ -83,7 +83,9 @@ Read More: https://github.com/chandrika-c247/nest-api/blob/main/src/auth/auth.co
 - [x] JWT Token
 - [x] User authentication
 - [x] Nodemailer
-- [x] Multer for image upload
+- [x] Multer for file upload
+- [x] Public file access
+- [x] Role wise file/image access
 - [x] Swagger for api documentation
 - [x] Role by API access
 - [x] API validation
