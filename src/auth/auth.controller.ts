@@ -4,11 +4,13 @@ import {
   Request,
   Post,
   Body,
-  Patch,
-  Param,
   HttpCode,
   HttpStatus,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'express';
 import { AuthService } from './auth.service';
 import { Roles } from '../common/decorators/roles.decorator';
 import { SignUpDto } from './dto/sign-up.dto';
@@ -51,5 +53,15 @@ export class AuthController {
   @Post('signup')
   signUp(@Body() createUserDto: SignUpDto) {
     return this.authService.signUp(createUserDto);
+  }
+
+  // Before it you have to create a folder name upload on root directory so it will upload file on that. API endpoint : auth/upload method: post 
+  @Roles('public')
+  @UseInterceptors(FileInterceptor('file'))
+  @Post('upload')
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    return {
+      file: file,
+    };
   }
 }
