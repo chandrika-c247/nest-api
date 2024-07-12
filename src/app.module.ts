@@ -3,12 +3,13 @@ import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './common/guards/auth.guard';
 import { MailModule } from './mail/mail.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
+import { AwsS3Module } from './aws-s3/aws-s3.module';
 
 @Global()
 @Module({
@@ -39,6 +40,7 @@ import { join } from 'path';
     UsersModule,
     AuthModule,
     MailModule,
+    AwsS3Module,
   ],
   exports: [MailModule],
   providers: [
