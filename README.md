@@ -65,6 +65,9 @@ Environment variables are :
 |    `MAIL_USER`      | Mail user name                          |    ❌     |
 |  `MAIL_PASSWORD`    | Mail password                           |    ❌     |
 |    `MAIL_FROM`      | Email address for mail sender address   |    ❌     |
+|`AWS_S3_BUCKET_NAME` | Amazon S3 bucket names                  |    ❌     |
+|`AWS_S3_ACCESS_KEY_ID`| Amazon S3 bucket access key            |    ❌     |
+|`AWS_S3_SECRET_ACCESS_KEY`| Amazon S3 bucket secret access key |    ❌     |
 
 ## <a name="github-actions">🐙 GitHub Actions</a>
 
@@ -84,8 +87,10 @@ Read More: https://github.com/chandrika-c247/nest-api/blob/main/src/auth/auth.co
 - [x] User authentication
 - [x] Nodemailer
 - [x] Multer for file upload
+- [x] File upload on s3Bucket
 - [x] Public file access
 - [x] Role wise file/image access
+- [x] Role wise file/image access from s3Bucket
 - [x] Swagger for api documentation
 - [x] Role by API access
 - [x] API validation

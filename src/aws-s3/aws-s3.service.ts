@@ -23,6 +23,15 @@ export class AwsS3Service {
     );
   }
 
+  async getFile(fileName: any) {
+    return await this.s3
+      .getObject({
+        Bucket: this.AWS_S3_BUCKET,
+        Key: fileName,
+      })
+      .promise();
+  }
+
   async s3_upload(
     file: Express.Multer.File,
     bucket: string,
